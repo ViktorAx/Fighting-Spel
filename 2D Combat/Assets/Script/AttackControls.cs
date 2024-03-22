@@ -9,8 +9,9 @@ public class AttackControls : MonoBehaviour
     private float pillarCooldown = 5f;
     private bool pillarAvalible = true;
 
-    [SerializeField] GameObject hollowPurple;
+    [SerializeField] GameObject hollowPurplePre;
     private float hollowCooldown = 5f;
+    private bool hollowAvalible = true;
 
 
 
@@ -23,11 +24,17 @@ public class AttackControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pillarCooldown -= Time.deltaTime;        
+        pillarCooldown -= Time.deltaTime;
+        hollowCooldown -= Time.deltaTime;
 
         if (pillarCooldown <= 0.0f)
         {
             pillarAvalible = true;
+        }
+
+        if (hollowCooldown <= 0.0f)
+        {
+            hollowAvalible = true;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && pillarAvalible)// && Input.GetKeyDown(KeyCode.Keypad1))
@@ -37,9 +44,11 @@ public class AttackControls : MonoBehaviour
             pillarAvalible = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H) && hollowAvalible)
         {
-
+            Instantiate(hollowPurplePre, playerPos.position, transform.rotation);
+            hollowCooldown = 5;
+            hollowAvalible = false;
         }
     }
 }

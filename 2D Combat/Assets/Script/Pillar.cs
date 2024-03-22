@@ -10,6 +10,8 @@ public class Pillar : MonoBehaviour
     public float LifeTime = 5;
     public float RiseTime = 1f;
 
+    [SerializeField] string Tag = "Projectile";
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,14 @@ public class Pillar : MonoBehaviour
     void timerEnded()
     {
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(Tag))
+        {
+            timerEnded();
+        }
     }
 }
 

@@ -652,7 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPos: {fileID: 1853244141}
   pillarPre: {fileID: 1868346616195534074, guid: 4000ec24ce2755c4ca4416ca406ce9e1, type: 3}
-  hollowPurple: {fileID: 0}
+  hollowPurplePre: {fileID: 790726767194753763, guid: c140685a20f04f942822a1d14a3ad515, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
