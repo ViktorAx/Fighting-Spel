@@ -17,8 +17,15 @@ public class HollowPurple : MonoBehaviour
         transform.position = new Vector2(transform.position.x + 4 * Time.deltaTime, transform.position.y);
     }
 
-    private void OnBecameInvisible()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        
     }
+
+
+    /*private void OnBecameInvisible()
+     {
+         Destroy(gameObject);
+     }
+    */
 }
