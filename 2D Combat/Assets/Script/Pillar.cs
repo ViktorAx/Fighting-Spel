@@ -44,7 +44,7 @@ public class Pillar : MonoBehaviour
             timerEnded();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && LifeTime >= 0.0f)
+        if (Input.GetKeyDown(KeyCode.G) && LifeTime >= 0.0f)
         {
             timerEnded();
         }

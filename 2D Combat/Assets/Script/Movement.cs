@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     bool grounded = false;
     bool jump = false;
+    static public bool flip = false; //false=Right true=Left
 
     void Start()
     {
@@ -26,6 +27,15 @@ public class Movement : MonoBehaviour
 
         rb.velocity = new Vector2(inputDir.x * speed, rb.velocity.y);
 
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            flip = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            flip = false;
+        }
+        
         if (jump)
         {
             Jump();

@@ -37,7 +37,7 @@ public class AttackControls : MonoBehaviour
             hollowAvalible = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && pillarAvalible)// && Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.G) && pillarAvalible)// && Input.GetKeyDown(KeyCode.Keypad1))
         {
             Instantiate(pillarPre, playerPos.position, transform.rotation);
             pillarCooldown = 5;

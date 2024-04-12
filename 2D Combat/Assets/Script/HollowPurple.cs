@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HollowPurple : MonoBehaviour
 {
+    float speed = 4;
 
     // Start is called before the first frame update
     void Start()
@@ -14,11 +15,17 @@ public class HollowPurple : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(transform.position.x + 4 * Time.deltaTime, transform.position.y);
+        transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
     }
 
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
+
+    public void FlightDirection()
+    {
+
+    }
+
 }
