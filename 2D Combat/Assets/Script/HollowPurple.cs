@@ -23,9 +23,9 @@ public class HollowPurple : MonoBehaviour
     }
 
 
-    /*private void OnBecameInvisible()
+    private void OnBecameInvisible()
      {
          Destroy(gameObject);
      }
-    */
+    
 }
