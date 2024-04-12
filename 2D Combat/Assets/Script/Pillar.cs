@@ -10,7 +10,7 @@ public class Pillar : MonoBehaviour
     public float LifeTime = 5;
     public float RiseTime = 1f;
 
-    [SerializeField] string Tag = "Projectile";
+    [SerializeField] string Tag = "Projectiles";
  
     // Start is called before the first frame update
     void Start()
