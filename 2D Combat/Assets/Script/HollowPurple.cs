@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class HollowPurple : MonoBehaviour
@@ -10,6 +11,10 @@ public class HollowPurple : MonoBehaviour
     void Start()
     {
         transform.position = new Vector2(transform.position.x, transform.position.y);
+        if (Movement.flip)
+        {
+            speed = -speed;
+        }
     }
 
     // Update is called once per frame
