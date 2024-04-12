@@ -11,7 +11,7 @@ public class HollowPurple : MonoBehaviour
     void Start()
     {
         transform.position = new Vector2(transform.position.x, transform.position.y);
-        if (Movement.flip)
+        if (movement2.flip)
         {
             speed = -speed;
         }

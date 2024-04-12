@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7720007126192224258}
   - component: {fileID: 7052865540949981926}
   m_Layer: 8
-  m_Name: HollowPurple
+  m_Name: HollowPurple 1
   m_TagString: Projectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -17,6 +17,9 @@ public class movement2 : MonoBehaviour
     bool isJumping;
     bool isGrounded;
 
+    static public bool flip = false; //false=Right true=Left
+
+
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -34,11 +37,14 @@ public class movement2 : MonoBehaviour
         if(Input.GetKey(left))
         {
             rb.velocity = new Vector2(-2, 0);
+            flip = true;
 
         }
         else if(Input.GetKey(right))
         {
             rb.velocity = new Vector2(2, 0);
+
+            flip = false;
         }
 
         Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
