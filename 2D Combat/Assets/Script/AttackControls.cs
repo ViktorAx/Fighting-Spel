@@ -13,7 +13,8 @@ public class AttackControls : MonoBehaviour
     private float hollowCooldown = 5f;
     private bool hollowAvalible = true;
 
-
+    public KeyCode HollowPurple;
+    public KeyCode StonePillar;
 
     // Start is called before the first frame update
     void Start()
@@ -37,14 +38,14 @@ public class AttackControls : MonoBehaviour
             hollowAvalible = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.G) && pillarAvalible)// && Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(StonePillar) && pillarAvalible)// && Input.GetKeyDown(KeyCode.Keypad1))
         {
             Instantiate(pillarPre, playerPos.position, transform.rotation);
             pillarCooldown = 5;
             pillarAvalible = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.H) && hollowAvalible)
+        if (Input.GetKeyDown(HollowPurple) && hollowAvalible)
         {
             Instantiate(hollowPurplePre, playerPos.position, transform.rotation);
             hollowCooldown = 5;
