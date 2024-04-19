@@ -10,8 +10,7 @@ public class movement2 : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
 
-    public KeyCode left;
-    public KeyCode right;
+
     public KeyCode jump;
 
     bool isJumping;
@@ -34,13 +33,13 @@ public class movement2 : MonoBehaviour
         isGrounded = rb.IsTouching(groundFilter);
 
         float horizontalInput = 0f;
-        if(Input.GetKey(left))
+        if(Input.GetKey(KeyCode.A))
         {
             rb.velocity = new Vector2(-2, 0);
             flip = true;
 
         }
-        else if(Input.GetKey(right))
+        else if(Input.GetKey(KeyCode.D))
         {
             rb.velocity = new Vector2(2, 0);
 

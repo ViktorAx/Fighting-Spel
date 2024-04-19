@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6657752597181096264}
   - component: {fileID: 1065856633832527592}
   - component: {fileID: 7903997504342027397}
+  - component: {fileID: -3576997245475661009}
   m_Layer: 0
   m_Name: EnemyAi
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,3 +149,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &-3576997245475661009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128162245680089507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590a92a96a313744ba72ce246804fe7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

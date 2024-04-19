@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6165039888312986361}
   - component: {fileID: 1906745982860333217}
-  - component: {fileID: 6348983530999243450}
   - component: {fileID: 7720007126192224258}
   - component: {fileID: 7052865540949981926}
+  - component: {fileID: 8515251385731753870}
   m_Layer: 9
-  m_Name: HollowPurple 2
+  m_Name: EnemyHollowPurple
   m_TagString: Projectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,18 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6348983530999243450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790726767194753763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c150db4c608e735448bcb5517f0178e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &7720007126192224258
 Rigidbody2D:
   serializedVersion: 4
@@ -193,3 +181,16 @@ PolygonCollider2D:
       - {x: 0.2929687, y: 0.42748368}
       - {x: 0.13977373, y: 0.50408125}
   m_UseDelaunayMesh: 0
+--- !u!114 &8515251385731753870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790726767194753763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc2440a7c636604f9832fa40aff0baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 443653445314069269, guid: 7e3e8e2f6ecdbb04a982af0a14f2d887, type: 3}

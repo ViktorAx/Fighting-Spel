@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class AttackControls : MonoBehaviour
@@ -13,7 +14,6 @@ public class AttackControls : MonoBehaviour
     private float hollowCooldown = 5f;
     private bool hollowAvalible = true;
 
-    public KeyCode HollowPurple;
     public KeyCode StonePillar;
 
     // Start is called before the first frame update
@@ -45,11 +45,12 @@ public class AttackControls : MonoBehaviour
             pillarAvalible = false;
         }
 
-        if (Input.GetKeyDown(HollowPurple) && hollowAvalible)
+        if (Input.GetKeyDown(KeyCode.H) && hollowAvalible)
         {
             Instantiate(hollowPurplePre, playerPos.position, transform.rotation);
             hollowCooldown = 5;
             hollowAvalible = false;
         }
+
     }
 }

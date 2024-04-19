@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class HollowPurple : MonoBehaviour
 {
+    public GameObject explosionEffect;
+
+
     float speed = 4;
 
     // Start is called before the first frame update
@@ -23,14 +26,25 @@ public class HollowPurple : MonoBehaviour
         transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
     }
 
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+
+        }
+    }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
 
-    public void FlightDirection()
-    {
 
-    }
+
+
 
 }

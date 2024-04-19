@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3470007112846206574}
   - component: {fileID: 9070328539773489215}
   - component: {fileID: 2191463401098204271}
-  - component: {fileID: 5159940997266322075}
   - component: {fileID: 5733256274592899717}
-  - component: {fileID: 4374764233837226371}
   - component: {fileID: 3339975713181012723}
+  - component: {fileID: 7348296448124489934}
+  - component: {fileID: -477670105395449897}
   m_Layer: 11
   m_Name: JOJO 2
   m_TagString: Player
@@ -152,34 +152,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5159940997266322075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4458858082994860350}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e309e4d14bd918e48969e4a42f4c0205, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  JumpForce: 7
-  groundFilter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
 --- !u!114 &5733256274592899717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +179,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5159940997266322075}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: SetMoveDir
         m_Mode: 0
@@ -231,7 +203,7 @@ MonoBehaviour:
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5159940997266322075}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: ActivateJump
         m_Mode: 0
@@ -294,23 +266,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4374764233837226371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4458858082994860350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8ed24a1afa5834a9dc6bfb5d8271c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPos: {fileID: 4667279523298753806}
-  pillarPre: {fileID: 1868346616195534074, guid: 4000ec24ce2755c4ca4416ca406ce9e1, type: 3}
-  hollowPurplePre: {fileID: 790726767194753763, guid: a18d44e8188806b46a071c9724ee08af, type: 3}
-  HollowPurple: 109
-  StonePillar: 110
 --- !u!114 &3339975713181012723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +273,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4458858082994860350}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea81189a3a8130d4f97c861c480a0d83, type: 3}
   m_Name: 
@@ -337,8 +292,51 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  moveSpeed: 3
-  jumpForce: 5
-  left: 276
-  right: 275
+  moveSpeed: 5
+  jumpForce: 7
+  jump: 273
+--- !u!114 &7348296448124489934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458858082994860350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205fa78fb1f7c964fa2d0757482a7e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPos: {fileID: 4667279523298753806}
+  pillarPre: {fileID: 1868346616195534074, guid: 4000ec24ce2755c4ca4416ca406ce9e1, type: 3}
+  EnemyHollowPurplePre: {fileID: 790726767194753763, guid: a18d44e8188806b46a071c9724ee08af, type: 3}
+  StonePillar: 110
+--- !u!114 &-477670105395449897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458858082994860350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e309e4d14bd918e48969e4a42f4c0205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  moveSpeed: 5
+  jumpForce: 7
   jump: 273
