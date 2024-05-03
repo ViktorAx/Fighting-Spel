@@ -1,65 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-
     [SerializeField] ContactFilter2D groundFilter;
 
     public float moveSpeed;
     public float jumpForce;
-
 
     public KeyCode jump;
 
     bool isJumping;
     bool isGrounded;
 
-    static public bool flip = false; //false=Right true=Left
-
+    static public bool flip = false; // false=Right true=Left
 
     private Rigidbody2D rb;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         isGrounded = rb.IsTouching(groundFilter);
 
         float horizontalInput = 0f;
+
+        // Move left
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rb.velocity = new Vector2(-2, 0);
-            flip = true;
-
+            horizontalInput = -1f;
         }
+        // Move right
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            rb.velocity = new Vector2(2, 0);
-
-            flip = false;
+            horizontalInput = 1f;
         }
 
-        Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+        // Move the character
+        rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
 
-
-
-        if (Input.GetKeyDown(jump) && !isJumping)
+        // Flip the character if moving left or right
+        if (horizontalInput < 0 && !flip || horizontalInput > 0 && flip)
         {
-            if (isGrounded)
-            {
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                isJumping = false;
-            }
+            Flip();
+        }
+
+        // Jump
+        if (Input.GetKeyDown(jump) && isGrounded)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isJumping = true;
         }
     }
+
+    void Flip()
+    {
+        // Flip the character horizontally
+        flip = !flip;
+        transform.Rotate(0f, 180f, 0f);
+    }
+
     public void ActivateJump(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -71,6 +74,8 @@ public class Movement : MonoBehaviour
             isJumping = false;
         }
     }
+}
+
 
 
 
@@ -139,4 +144,4 @@ public class Movement : MonoBehaviour
 
 
 
-}
+

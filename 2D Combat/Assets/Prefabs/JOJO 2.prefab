@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9070328539773489215}
   - component: {fileID: 2191463401098204271}
   - component: {fileID: 5733256274592899717}
-  - component: {fileID: 3339975713181012723}
   - component: {fileID: 7348296448124489934}
   - component: {fileID: -477670105395449897}
   m_Layer: 11
@@ -266,35 +265,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &3339975713181012723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4458858082994860350}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea81189a3a8130d4f97c861c480a0d83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundFilter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  moveSpeed: 5
-  jumpForce: 7
-  jump: 273
 --- !u!114 &7348296448124489934
 MonoBehaviour:
   m_ObjectHideFlags: 0
