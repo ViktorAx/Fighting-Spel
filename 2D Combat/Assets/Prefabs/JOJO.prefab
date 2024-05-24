@@ -323,3 +323,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248516d62b02e0a4cad5844612e61bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
+  Tag: Projectiles

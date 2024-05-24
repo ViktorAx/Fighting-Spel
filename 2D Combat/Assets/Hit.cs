@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Hit : MonoBehaviour
 {
-
     [SerializeField] string Tag = "Projectiles";
     HealthManager healthManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,7 @@ public class Hit : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.CompareTag(Tag))
+        if (collision.gameObject.CompareTag("Player"))
         {
             healthManager.TakeDamage(20);
         }

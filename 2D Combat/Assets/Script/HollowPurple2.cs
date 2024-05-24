@@ -7,6 +7,8 @@ public class HollowPurple2 : MonoBehaviour
 {
     public GameObject explosionEffecT;
 
+    HealthManager Playerhealth;
+
     float speeD = 4;
 
     // Start is called before the first frame update
@@ -32,6 +34,7 @@ public class HollowPurple2 : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Instantiate(explosionEffecT, transform.position, transform.rotation);
+            Playerhealth.TakeDamage();
             Destroy(gameObject);
 
         }

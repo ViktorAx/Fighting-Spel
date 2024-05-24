@@ -1,31 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    public Image healthBar;
-    public float healthAmount = 100f;
+    [SerializeField]public Image healthBar;
+    //public float healthAmount = 100f;
+    public float maxHealth;
+    public float currentHelath;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHelath = maxHealth;
     }
 
     // Update is called once per frame
-    void Update()
+    public void UpdateHealth(float amount)
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            TakeDamage(20);
-        }   
+        currentHelath += amount;
+        UpdateHealthBar();
     }
 
-    public void TakeDamage(float damage)
+    private void UpdateHealthBar()
     {
-        healthAmount -= damage;
-        healthBar.fillAmount = healthAmount / 100f;
+        float targetFillAmount = currentHelath / maxHealth;
+        healthBar.fillAmount = targetFillAmount;
     }
 }
