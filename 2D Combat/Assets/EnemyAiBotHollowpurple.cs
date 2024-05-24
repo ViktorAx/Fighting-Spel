@@ -16,7 +16,6 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
     private Transform player;
     private bool isFacingRight = true;
-    private bool isRetreating = false;
 
     private float nextPillarTime = 0f;
     private float nextHollowPurpleTime = 0f;
@@ -29,43 +28,39 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        // Retreat from player if too close
+        // Ensure the enemy is always upright
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        // Calculate distance to player
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer < retreatDistance)
-        {
-            isRetreating = true;
-        }
-        else
-        {
-            isRetreating = false;
-        }
 
-        // Move towards or away from player
-        if (!isRetreating)
-        {
-            MoveTowardsPlayer();
-        }
-        else
-        {
-            RetreatFromPlayer();
-        }
-
-        // Check for attack range
+        // Determine behavior based on distance to player
         if (distanceToPlayer <= attackRange)
         {
             Attack();
         }
+        else if (distanceToPlayer < retreatDistance)
+        {
+            RetreatFromPlayer();
+        }
+        else
+        {
+            MoveTowardsPlayer();
+        }
+
+        // Ensure enemy stays within bounds (optional, adjust to your game boundaries)
+        StayWithinBounds();
     }
 
     void MoveTowardsPlayer()
     {
-        float horizontalInput = player.position.x - transform.position.x;
+        float direction = player.position.x - transform.position.x;
 
         // Move towards player
-        rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(Mathf.Sign(direction) * moveSpeed, rb.velocity.y);
 
-        // Flip if necessary
-        if (horizontalInput < 0 && isFacingRight || horizontalInput > 0 && !isFacingRight)
+        // Flip sprite if necessary
+        if (direction < 0 && isFacingRight || direction > 0 && !isFacingRight)
         {
             Flip();
         }
@@ -73,13 +68,13 @@ public class EnemyAI : MonoBehaviour
 
     void RetreatFromPlayer()
     {
-        float horizontalInput = transform.position.x - player.position.x;
+        float direction = transform.position.x - player.position.x;
 
         // Move away from player
-        rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(Mathf.Sign(direction) * moveSpeed, rb.velocity.y);
 
-        // Flip if necessary
-        if (horizontalInput < 0 && !isFacingRight || horizontalInput > 0 && isFacingRight)
+        // Flip sprite if necessary
+        if (direction < 0 && !isFacingRight || direction > 0 && isFacingRight)
         {
             Flip();
         }
@@ -87,25 +82,24 @@ public class EnemyAI : MonoBehaviour
 
     void Attack()
     {
-        // Jump if cooldown is over
-        if (Time.time >= nextPillarTime)
-        {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            nextPillarTime = Time.time + pillarCooldown;
-        }
-
-        // Spawn pillar if cooldown is over
+        // Attack logic
         if (Time.time >= nextPillarTime)
         {
             SpawnPillar();
             nextPillarTime = Time.time + pillarCooldown;
         }
 
-        // Spawn Hollow Purple if cooldown is over
         if (Time.time >= nextHollowPurpleTime)
         {
             SpawnHollowPurple();
             nextHollowPurpleTime = Time.time + hollowPurpleCooldown;
+        }
+
+        // Optional: Add a jump attack with cooldown
+        if (Time.time >= nextPillarTime)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            nextPillarTime = Time.time + pillarCooldown;
         }
     }
 
@@ -122,7 +116,27 @@ public class EnemyAI : MonoBehaviour
     void Flip()
     {
         isFacingRight = !isFacingRight;
-        transform.Rotate(0f, 180f, 0f);
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+
+    void StayWithinBounds()
+    {
+        // Implement boundary logic here
+        // Example: if enemy goes off the screen, reset position or change direction
+        Vector3 position = transform.position;
+
+        // Example boundaries
+        float leftBound = -10f;
+        float rightBound = 10f;
+
+        if (position.x < leftBound || position.x > rightBound)
+        {
+            // Reverse direction if hitting bounds
+            Flip();
+            rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
