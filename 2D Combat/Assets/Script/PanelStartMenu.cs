@@ -29,6 +29,11 @@ public class PanelStartMenu : MonoBehaviour
         panel.SetActive(false);
 
     }
+    public void showMenu()
+    {
+        panel.SetActive(true);
+
+    }
 
     public void onePlayer()
     {
