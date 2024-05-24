@@ -1,55 +1,34 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class BotManager : MonoBehaviour
-{
-    public GameObject playerBotPrefab;
-    public GameObject enemyBotPrefab;
-    public Transform playerSpawnPoint;
-    public Transform enemySpawnPoint;
-
-    private GameObject playerBot;
-    private GameObject enemyBot;
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            SpawnPlayerBot();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SpawnEnemyBot();
-        }
-    }
-
-    void SpawnPlayerBot()
-    {
-        if (playerBot == null)
-        {
-            playerBot = Instantiate(playerBotPrefab, playerSpawnPoint.position, playerSpawnPoint.rotation);
-            playerBot.tag = "PlayerBot";
-        }
-    }
-
-    void SpawnEnemyBot()
-    {
-        if (enemyBot == null)
-        {
-            enemyBot = Instantiate(enemyBotPrefab, enemySpawnPoint.position, enemySpawnPoint.rotation);
-            enemyBot.tag = "EnemyBot";
-        }
-    }
-}
 
 public class EnemyAiPlayer : MonoBehaviour
 {
     private GameObject target;
     public float speed = 2.0f;
+    public float attackRange = 5.0f;
+    public GameObject hollowpurplePrefab;
+    public GameObject pilarPrefab;
+    public Transform attackPoint;
+
+    private Animator animator;
+    private bool isAttacking = false;
 
     void Start()
+    {
+        animator = GetComponent<Animator>();
+        SetTarget();
+    }
+
+    void Update()
+    {
+        if (target != null)
+        {
+            MoveTowardsTarget();
+            AttackTarget();
+        }
+    }
+
+    void SetTarget()
     {
         if (tag == "PlayerBot")
         {
@@ -61,12 +40,46 @@ public class EnemyAiPlayer : MonoBehaviour
         }
     }
 
-    void Update()
+    void MoveTowardsTarget()
     {
-        if (target != null)
+        if (!isAttacking)
         {
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+            Vector3 direction = (target.transform.position - transform.position).normalized;
+            direction.y = 0;
+            transform.rotation = Quaternion.LookRotation(direction);
         }
+    }
+
+    void AttackTarget()
+    {
+        float distance = Vector3.Distance(transform.position, target.transform.position);
+        if (distance <= attackRange && !isAttacking)
+        {
+            StartCoroutine(PerformAttack());
+        }
+    }
+
+    IEnumerator PerformAttack()
+    {
+        isAttacking = true;
+        animator.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(1.0f); // Delay before the attack is fired
+
+        // Instantiate attack based on preference
+        if (Random.Range(0, 2) == 0)
+        {
+            Instantiate(hollowpurplePrefab, attackPoint.position, attackPoint.rotation);
+        }
+        else
+        {
+            Instantiate(pilarPrefab, attackPoint.position, attackPoint.rotation);
+        }
+
+        yield return new WaitForSeconds(1.0f); // Cooldown period before next action
+
+        isAttacking = false;
     }
 }

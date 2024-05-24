@@ -15,10 +15,12 @@ public class movement2 : MonoBehaviour
     static public bool flip = false; // false=Right true=Left
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -53,6 +55,9 @@ public class movement2 : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isJumping = true;
         }
+
+        // Update animator parameters
+        UpdateAnimator(horizontalInput);
     }
 
     void Flip()
@@ -60,6 +65,18 @@ public class movement2 : MonoBehaviour
         // Flip the character horizontally
         flip = !flip;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    void UpdateAnimator(float horizontalInput)
+    {
+        // Set animator parameters based on input and states
+        animator.SetFloat("Speed", Mathf.Abs(horizontalInput)); // Set speed parameter
+        animator.SetBool("isJumping", !isGrounded); // Set isJumping parameter
+
+        if (horizontalInput != 0)
+        {
+            animator.SetFloat("Direction", horizontalInput); // Set direction parameter
+        }
     }
 
     public void ActivateJump(InputAction.CallbackContext context)
