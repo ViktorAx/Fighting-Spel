@@ -83,7 +83,7 @@ public class Movement : MonoBehaviour
     private void Destroyed()
     {
 
-        Destroy(gameObject);
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
     }
 }
 

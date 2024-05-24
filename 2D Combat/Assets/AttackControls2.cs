@@ -44,7 +44,7 @@ public class AttackControls2 : MonoBehaviour
             pillarAvalible = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.M) && hollowAvalible)
+        if (Input.GetKeyDown(KeyCode.PageDown) && hollowAvalible)
         {
             Instantiate(EnemyHollowPurplePre, playerPos.position, transform.rotation);
             hollowCooldown = 5;

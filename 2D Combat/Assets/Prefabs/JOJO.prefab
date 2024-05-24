@@ -281,7 +281,7 @@ MonoBehaviour:
   playerPos: {fileID: 1210295786353922993}
   pillarPre: {fileID: 1868346616195534074, guid: 4000ec24ce2755c4ca4416ca406ce9e1, type: 3}
   hollowPurplePre: {fileID: 790726767194753763, guid: c140685a20f04f942822a1d14a3ad515, type: 3}
-  StonePillar: 103
+  StonePillar: 113
 --- !u!114 &4512546441326755811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,5 +323,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248516d62b02e0a4cad5844612e61bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
   Tag: Projectiles

@@ -57,7 +57,7 @@ public class movement2 : MonoBehaviour
         }
 
         // Update animator parameters
-        UpdateAnimator(horizontalInput);
+        //UpdateAnimator(horizontalInput);
     }
 
     void Flip()
@@ -67,17 +67,17 @@ public class movement2 : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
-    void UpdateAnimator(float horizontalInput)
-    {
-        // Set animator parameters based on input and states
-        animator.SetFloat("Speed", Mathf.Abs(horizontalInput)); // Set speed parameter
-        animator.SetBool("isJumping", !isGrounded); // Set isJumping parameter
+    //void UpdateAnimator(float horizontalInput)
+    //{
+    //    // Set animator parameters based on input and states
+    //    animator.SetFloat("Speed", Mathf.Abs(horizontalInput)); // Set speed parameter
+    //    animator.SetBool("isJumping", !isGrounded); // Set isJumping parameter
 
-        if (horizontalInput != 0)
-        {
-            animator.SetFloat("Direction", horizontalInput); // Set direction parameter
-        }
-    }
+    //    if (horizontalInput != 0)
+    //    {
+    //        animator.SetFloat("Direction", horizontalInput); // Set direction parameter
+    //    }
+    //}
 
     public void ActivateJump(InputAction.CallbackContext context)
     {
@@ -93,6 +93,6 @@ public class movement2 : MonoBehaviour
 
     public void Destroy()
     {
-        Destroy(gameObject);
+        Destroy(GameObject.FindGameObjectWithTag("Enemy"));
     }
 }

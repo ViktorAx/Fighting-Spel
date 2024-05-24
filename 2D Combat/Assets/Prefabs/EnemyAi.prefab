@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4699623147178414769}
   m_Layer: 0
   m_Name: EnemyAi
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,12 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08129d4c5669ad14e93de6767af94413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillarPrefab: {fileID: 0}
-  hollowPurplePrefab: {fileID: 0}
+  pillarPrefab: {fileID: 1868346616195534074, guid: 4000ec24ce2755c4ca4416ca406ce9e1, type: 3}
+  hollowPurplePrefab: {fileID: 790726767194753763, guid: eff0fda0205741e48ba30acad4a47caa, type: 3}
   explosionEffect: {fileID: 0}
   moveSpeed: 5
   jumpForce: 10
   retreatDistance: 5
   attackRange: 2
-  pillarSpawnInterval: 1
-  hollowPurpleSpawnInterval: 1
+  pillarCooldown: 5
+  hollowPurpleCooldown: 10
