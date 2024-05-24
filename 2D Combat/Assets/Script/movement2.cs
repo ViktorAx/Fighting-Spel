@@ -90,4 +90,9 @@ public class movement2 : MonoBehaviour
             isJumping = false;
         }
     }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }

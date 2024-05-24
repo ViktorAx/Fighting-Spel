@@ -74,6 +74,17 @@ public class Movement : MonoBehaviour
             isJumping = false;
         }
     }
+
+    public void Death()
+    {
+        Destroyed();
+    }
+
+    private void Destroyed()
+    {
+
+        Destroy(gameObject);
+    }
 }
 
 
