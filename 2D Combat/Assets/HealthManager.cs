@@ -7,26 +7,25 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
     [SerializeField]public Image healthBar;
-    //public float healthAmount = 100f;
-    public float maxHealth;
-    public float currentHelath;
+    [SerializeField] public Image healthBar1;
+    public float healthAmount = 100f;
+    public float healthAmount1 = 100f;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHelath = maxHealth;
+
     }
 
-    // Update is called once per frame
-    public void UpdateHealth(float amount)
+    public void TakeDamage(float damage)
     {
-        currentHelath += amount;
-        UpdateHealthBar();
+        healthAmount -= damage;
+        healthBar.fillAmount = healthAmount / 100f;
     }
 
-    private void UpdateHealthBar()
+    public void TakeDamage1(float damage)
     {
-        float targetFillAmount = currentHelath / maxHealth;
-        healthBar.fillAmount = targetFillAmount;
+        healthAmount1 -= damage;
+        healthBar1.fillAmount = healthAmount1 / 100f;
     }
 }
