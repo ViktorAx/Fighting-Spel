@@ -7,13 +7,15 @@ public class HollowPurple2 : MonoBehaviour
 {
     public GameObject explosionEffecT;
 
-    HealthManager Playerhealth;
+    HealthManager PlayerhealthScript;
 
     float speeD = 4;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerhealthScript = GameObject.FindGameObjectWithTag("Health1").GetComponent<HealthManager>();
+
         transform.position = new Vector2(transform.position.x, transform.position.y);
         if (Movement.flip)
         {
@@ -28,15 +30,24 @@ public class HollowPurple2 : MonoBehaviour
     }
 
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
+    //public void OnTriggerEnter2D(Collider2D collision)
+    //{
 
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        Instantiate(explosionEffecT, transform.position, transform.rotation);
+    //        PlayerhealthScript.TakeDamage(20);
+    //        Destroy(gameObject);
+
+    //    }
+    //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Instantiate(explosionEffecT, transform.position, transform.rotation);
-            Playerhealth.TakeDamage();
+            PlayerhealthScript.TakeDamage(20);
             Destroy(gameObject);
-
         }
     }
 
